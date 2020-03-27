@@ -32,6 +32,9 @@ public class SpringmvctrainingApplication implements CommandLineRunner {
             System.out.println(produit.toString());
         });
 
-
+        Page<Produit> produits1 = produitRepository.chercher("%a%",2000,PageRequest.of(0,2));
+        produits1.getContent().forEach(produit -> {
+            System.out.println(produit.toString());
+        });
     }
 }

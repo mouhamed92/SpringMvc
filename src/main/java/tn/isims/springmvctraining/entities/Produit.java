@@ -13,6 +13,15 @@ import javax.persistence.Id;
 @Entity
 public class Produit {
 
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id ;
+    private String designation ;
+    private double prix ;
+    private double quntite ;
+
+    public Produit() {
+    }
+
     public Produit(Long id, String designation, double prix, double quntite) {
         this.id = id;
         this.designation = designation;
@@ -29,17 +38,6 @@ public class Produit {
                 ", quntite=" + quntite +
                 '}';
     }
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id ;
-    private String designation ;
-    private double prix ;
-    private double quntite ;
-
-    public Produit() {
-    }
-
-
 
     public Long getId() {
         return id;
