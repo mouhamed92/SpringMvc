@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout" xmlns:div="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Produits</title>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.1.3/css/bootstrap.min.css"/>
 </head>
 <body>
+<div layout:fragment="content1">
 <div class="container mt-5">
-<div class="card">
-    <div class="card-header"><h3>Liste de produits :</h3></div>
-    <div class="card-body">
+<div class="panel panel-primary">
+    <div class="panel-heading"><h3>Liste de produits :</h3></div>
+    <div class="panel-body">
         <form th:action="@{produits}" method="get">
             <div class="mb-3" >
                 <p>Mot clé :</p>
@@ -27,6 +29,8 @@
                 <td th:text="${p.quntite}"></td>
                 <td th:text="${p.prix}"></td>
                 <td ><a class=" btn btn-danger" th:href="@{delete(id=${p.id},page=${Currentpage},size=${size},motC=${motC})}">Delete</a></td>
+                <td ><a class=" btn btn-danger" th:href="@{edit(id=${p.id})}">Edit</a></td>
+
             </tr>
         </table>
         <ul class="nav nav-pills">
@@ -36,6 +40,7 @@
         </li>
         </ul>
     </div>
+</div>
 </div>
 </div>
 </body>

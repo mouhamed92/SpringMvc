@@ -1,0 +1,38 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout" xmlns:div="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Sasie d'un produit</title>
+</head>
+<body>
+<div layout:fragment="content1">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4>Produit :</h4></div>
+            <div class="panel-body">
+                <form th:action="@{save}" method="post">
+                    <div class="form-group">
+                        <label class="control-label">Désignation</label>
+                        <input class="form-control" type="text" name="designation" th:value="${produit.designation}"/>
+                        <span th:errors="${produit.designation}" c></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Prix</label>
+                        <input class="form-control" type="text" name="prix"  th:value="${produit.prix}"/>
+                        <span th:errors="${produit.prix}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Quantite</label>
+                        <input class="form-control" type="text" name="quntite"  th:value="${produit.quntite}"/>
+                        <span th:errors="${produit.quntite}" class="text-danger"></span>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
