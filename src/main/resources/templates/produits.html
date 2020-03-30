@@ -10,17 +10,31 @@
 <div class="card">
     <div class="card-header"><h3>Liste de produits :</h3></div>
     <div class="card-body">
+        <form th:action="@{produits}" method="get">
+            <div class="mb-3" >
+                <p>Mot clé :</p>
+                <input  type="text" th:value="${motC}" name="motC">
+                <button class="btn btn-primary">Chercher</button>
+            </div>
+        </form>
         <table class="table">
             <tr>
                 <th>ID</th>  <th>NOM</th>  <th>QANTITE</th> <th>PRIX</th>
             </tr>
-            <tr th:each="p:${ListeProduit}">
-                <td th:text="${p.id}"/>
-                <td th:text="${p.designation}"/>
-                <td th:text="${p.quntite}"/>
-                <td th:text="${p.prix}"/>
+            <tr th:each="p:${pageProduit.content}">
+                <td th:text="${p.id}"></td>
+                <td th:text="${p.designation}"></td>
+                <td th:text="${p.quntite}"></td>
+                <td th:text="${p.prix}"></td>
+                <td ><a class=" btn btn-danger" th:href="@{delete(id=${p.id},page=${Currentpage},size=${size},motC=${motC})}">Delete</a></td>
             </tr>
         </table>
+        <ul class="nav nav-pills">
+        <li th:each="page,status:${pages}">
+            <a  th:class="${status.index==Currentpage?'btn btn-primary':'btn'}"
+                th:href="@{produits(page=${status.index},size=${size},motC=${motC})}" th:text="${status.index}"></a>
+        </li>
+        </ul>
     </div>
 </div>
 </div>
